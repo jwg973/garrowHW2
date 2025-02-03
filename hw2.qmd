@@ -1,0 +1,108 @@
+title: "HW2 Wines of the PNW"
+author: "Jon Garrow"
+format: html
+---
+
+**Abstract:**
+
+This is a technical blog post of **both** an HTML file *and* [.qmd file](src/wine_features.qmd) hosted on GitHub pages.
+
+# Setup
+
+
+3.  In the space provided after the R chunk, explain what thecode is doing (line by line) then delete this line.
+4.  Get your [GitHub Pages](https://docs.github.com/en/pages/quickstart) ready.
+
+**Set Up Code:**
+```{r}
+#rm(wine)
+library(tidyverse)
+library(caret)
+library(fastDummies)
+wine <- readRDS(gzcon(url("https://github.com/cd-public/D505/raw/master/dat/wine.rds")))
+
+summary(wine)
+```
+
+**Explanation:**
+
+> <span style="color:red;font-weight:bold">TODO</span>: *write your line-by-line explanation of the code here*
+
+-Load package tidyverse
+-Load package caret (caray?)
+-Load package fastDummies
+-Read rds file from github repo and set to variable wine
+-Preview variable wine to ensure fresh copy was read in 
+
+# Feature Engineering
+
+We begin by engineering an number of features.
+
+1. Create a total of 12 features (including points). 
+2. Remove all rows with a missing value. 
+3. Ensure only log(price) and engineering features are the only columns that remain in the `wino` dataframe.
+
+```{r}
+
+wall <- wine
+wine = wall[sample(nrow(wall), 1000), ] #sample of 1K ratings to enable performance
+summary(wine)
+
+wine <- wine %>% 
+  mutate(lprice=log(price)) %>% #gotta log
+  mutate(oregon=province == "Oregon") %>% #dummy variables for province
+  mutate(california=province == "California") %>%
+  mutate(newyork=province == "New York") %>%
+  mutate(bordeaux= province == "Bordeaux") %>%
+  mutate(pinot_noir = variety == "Pinot Noir") %>% #dummy variables for varietals
+  mutate(cabernet = variety == "Cabernet Sauvignon") %>%
+  mutate(chard = variety == "Chardonnay") %>%
+  mutate(redblend = variety == "Red Blend") %>%
+  mutate(ries = variety == "Riesling") %>%
+  mutate(tannins = ifelse(str_detect(description, regex("tannin|tannic", ignore_case = TRUE)),1,0)) %>% #dummy variable for presence of tannins
+  mutate_at("points", list(standardized = ~ (scale(.) %>% as.vector()))) %>% #standardize the points
+  drop_na(.)
+
+wino <- wine %>% select(id, standardized, oregon, california, newyork, bordeaux, lprice, tannins, cabernet, chard, pinot_noir, redblend, ries) #limit dataframe to just engineered features
+
+summary(wino)
+
+```
+
+# Caret
+
+We now use a train/test split to evaluate the features.
+
+1. Use the Caret library to partition the wino dataframe into an 80/20 split. 
+2. Run a linear regression with bootstrap resampling. 
+3. Report RMSE on the test partition of the data.
+
+```{r}
+# TODO: hint: Check the slides.
+
+wine_index <- createDataPartition(wino$lprice, p = 0.8, list = FALSE) #partition 80% of wino with a random sampling of the lprice variable
+wino_train <- wino[wine_index, ] #assign partitioned data to training dataset
+wino_test <- wino[-wine_index, ] #assign the rest of the data to testing dataset
+summary(wino_train)
+
+m1 <- train(lprice ~ .,
+  data = wino_train,
+  method = "lm",
+  trControl = trainControl(method = "boot", number = 10)
+) #configure train to cross validate across all variables in the training dataset, resampling with boostrap 10 times
+
+m1
+
+postResample(pred = predict(m1, wino_test), obs = wino_test$lprice)
+
+```
+
+# Variable selection
+
+We now graph the importance of your 12 features.
+
+```{r}
+# TODO: hint: Check the slides.
+
+plot(varImp(m1, scale = TRUE))
+```
