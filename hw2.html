@@ -80,7 +80,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>title: “HW2 Wines of the PNW” author: “Jon Garrow” format: html</p>
+<p>title: “HW2 Wines of the PNW” author: “Jon Garrow” format: html: embed-resources: true</p>
 <hr>
 <p><strong>Abstract:</strong></p>
 <p>This is a technical blog post of <strong>both</strong> an HTML file <em>and</em> <a href="src/wine_features.qmd">.qmd file</a> hosted on GitHub pages.</p>
@@ -177,19 +177,19 @@ The following object is masked from 'package:purrr':
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wine)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       id           country          description        designation       
- Min.   :   259   Length:1000        Length:1000        Length:1000       
- 1st Qu.: 30517   Class :character   Class :character   Class :character  
- Median : 63513   Mode  :character   Mode  :character   Mode  :character  
- Mean   : 63522                                                           
- 3rd Qu.: 95872                                                           
- Max.   :129587                                                           
+ Min.   :   448   Length:1000        Length:1000        Length:1000       
+ 1st Qu.: 34538   Class :character   Class :character   Class :character  
+ Median : 63284   Mode  :character   Mode  :character   Mode  :character  
+ Mean   : 64784                                                           
+ 3rd Qu.: 98660                                                           
+ Max.   :129769                                                           
      points          price          province           region_1        
- Min.   :80.00   Min.   :  6.00   Length:1000        Length:1000       
- 1st Qu.:87.00   1st Qu.: 18.00   Class :character   Class :character  
- Median :89.00   Median : 25.00   Mode  :character   Mode  :character  
- Mean   :88.78   Mean   : 33.84                                        
- 3rd Qu.:91.00   3rd Qu.: 40.00                                        
- Max.   :97.00   Max.   :574.00                                        
+ Min.   :80.00   Min.   :  5.00   Length:1000        Length:1000       
+ 1st Qu.:86.00   1st Qu.: 16.00   Class :character   Class :character  
+ Median :88.00   Median : 25.00   Mode  :character   Mode  :character  
+ Mean   :88.49   Mean   : 36.19                                        
+ 3rd Qu.:91.00   3rd Qu.: 44.00                                        
+ Max.   :98.00   Max.   :660.00                                        
    region_2         taster_name        taster_twitter_handle    title          
  Length:1000        Length:1000        Length:1000           Length:1000       
  Class :character   Class :character   Class :character      Class :character  
@@ -198,7 +198,7 @@ The following object is masked from 'package:purrr':
                                                                                
                                                                                
    variety             winery               year     
- Length:1000        Length:1000        Min.   :1995  
+ Length:1000        Length:1000        Min.   :1998  
  Class :character   Class :character   1st Qu.:2010  
  Mode  :character   Mode  :character   Median :2012  
                                        Mean   :2011  
@@ -225,30 +225,30 @@ The following object is masked from 'package:purrr':
 <span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wino)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       id          standardized       oregon        california     
- Min.   :   526   Min.   :-2.7055   Mode :logical   Mode :logical  
- 1st Qu.: 29730   1st Qu.:-0.2706   FALSE:225       FALSE:110      
- Median : 62740   Median : 0.4251   TRUE :41        TRUE :156      
- Mean   : 62984   Mean   : 0.2577                                  
- 3rd Qu.: 95998   3rd Qu.: 0.7729                                  
- Max.   :129248   Max.   : 2.1643                                  
+ Min.   :   609   Min.   :-2.1017   Mode :logical   Mode :logical  
+ 1st Qu.: 34486   1st Qu.:-0.4820   FALSE:184       FALSE:98       
+ Median : 60693   Median : 0.4898   TRUE :37        TRUE :123      
+ Mean   : 62943   Mean   : 0.2729                                  
+ 3rd Qu.: 91041   3rd Qu.: 0.8137                                  
+ Max.   :129769   Max.   : 2.7574                                  
   newyork         bordeaux           lprice         tannins      
- Mode :logical   Mode :logical   Min.   :2.079   Min.   :0.0000  
- FALSE:264       FALSE:266       1st Qu.:3.178   1st Qu.:0.0000  
- TRUE :2                         Median :3.555   Median :0.0000  
-                                 Mean   :3.522   Mean   :0.3008  
-                                 3rd Qu.:3.912   3rd Qu.:1.0000  
-                                 Max.   :5.273   Max.   :1.0000  
+ Mode :logical   Mode :logical   Min.   :1.946   Min.   :0.0000  
+ FALSE:220       FALSE:221       1st Qu.:3.219   1st Qu.:0.0000  
+ TRUE :1                         Median :3.584   Median :0.0000  
+                                 Mean   :3.597   Mean   :0.2217  
+                                 3rd Qu.:3.912   3rd Qu.:0.0000  
+                                 Max.   :5.416   Max.   :1.0000  
   cabernet         chard         pinot_noir       redblend      
  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
- FALSE:234       FALSE:234       FALSE:212       FALSE:245      
- TRUE :32        TRUE :32        TRUE :54        TRUE :21       
+ FALSE:195       FALSE:205       FALSE:168       FALSE:206      
+ TRUE :26        TRUE :16        TRUE :53        TRUE :15       
                                                                 
                                                                 
                                                                 
     ries        
  Mode :logical  
- FALSE:260      
- TRUE :6        
+ FALSE:218      
+ TRUE :3        
                 
                 
                 </code></pre>
@@ -272,30 +272,30 @@ The following object is masked from 'package:purrr':
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wino_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       id          standardized       oregon        california     
- Min.   :   526   Min.   :-2.7055   Mode :logical   Mode :logical  
- 1st Qu.: 29277   1st Qu.:-0.2706   FALSE:179       FALSE:94       
- Median : 59618   Median : 0.4251   TRUE :36        TRUE :121      
- Mean   : 61679   Mean   : 0.2261                                  
- 3rd Qu.: 95711   3rd Qu.: 0.7729                                  
- Max.   :129248   Max.   : 2.1643                                  
+ Min.   :   609   Min.   :-2.1017   Mode :logical   Mode :logical  
+ 1st Qu.: 35450   1st Qu.:-0.1581   FALSE:147       FALSE:79       
+ Median : 60634   Median : 0.4898   TRUE :31        TRUE :99       
+ Mean   : 62403   Mean   : 0.3424                                  
+ 3rd Qu.: 90607   3rd Qu.: 1.1377                                  
+ Max.   :129769   Max.   : 2.7574                                  
   newyork         bordeaux           lprice         tannins      
- Mode :logical   Mode :logical   Min.   :2.079   Min.   :0.0000  
- FALSE:213       FALSE:215       1st Qu.:3.178   1st Qu.:0.0000  
- TRUE :2                         Median :3.555   Median :0.0000  
-                                 Mean   :3.527   Mean   :0.2744  
-                                 3rd Qu.:3.912   3rd Qu.:1.0000  
-                                 Max.   :5.273   Max.   :1.0000  
+ Mode :logical   Mode :logical   Min.   :1.946   Min.   :0.0000  
+ FALSE:177       FALSE:178       1st Qu.:3.219   1st Qu.:0.0000  
+ TRUE :1                         Median :3.624   Median :0.0000  
+                                 Mean   :3.592   Mean   :0.2247  
+                                 3rd Qu.:3.912   3rd Qu.:0.0000  
+                                 Max.   :5.416   Max.   :1.0000  
   cabernet         chard         pinot_noir       redblend      
  Mode :logical   Mode :logical   Mode :logical   Mode :logical  
- FALSE:188       FALSE:189       FALSE:175       FALSE:200      
- TRUE :27        TRUE :26        TRUE :40        TRUE :15       
+ FALSE:156       FALSE:165       FALSE:133       FALSE:166      
+ TRUE :22        TRUE :13        TRUE :45        TRUE :12       
                                                                 
                                                                 
                                                                 
     ries        
  Mode :logical  
- FALSE:209      
- TRUE :6        
+ FALSE:176      
+ TRUE :2        
                 
                 
                 </code></pre>
@@ -303,33 +303,127 @@ The following object is masked from 'package:purrr':
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">train</span>(lprice <span class="sc">~</span> .,</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> wino_train,</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">method =</span> <span class="st">"lm"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">number =</span> <span class="dv">10</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>) <span class="co">#configure train to cross validate across all variables in the training dataset, resampling with boostrap 10 times</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">trControl =</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"boot"</span>, <span class="at">number =</span> <span class="dv">100</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>) <span class="co">#configure train to cross validate across all variables in the training dataset, resampling with boostrap 100 times</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
+attr(*, "non-estim") has doubtful cases
+Warning in predict.lm(modelFit, newdata): prediction from rank-deficient fit;
 attr(*, "non-estim") has doubtful cases</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>m1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Linear Regression 
 
-215 samples
+178 samples
  12 predictor
 
 No pre-processing
-Resampling: Bootstrapped (10 reps) 
-Summary of sample sizes: 215, 215, 215, 215, 215, 215, ... 
+Resampling: Bootstrapped (100 reps) 
+Summary of sample sizes: 178, 178, 178, 178, 178, 178, ... 
 Resampling results:
 
-  RMSE      Rsquared   MAE     
-  0.487008  0.2682877  0.386357
+  RMSE       Rsquared  MAE      
+  0.4447221  0.412104  0.3517862
 
 Tuning parameter 'intercept' was held constant at a value of TRUE</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">postResample</span>(<span class="at">pred =</span> <span class="fu">predict</span>(m1, wino_test), <span class="at">obs =</span> wino_test<span class="sc">$</span>lprice)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     RMSE  Rsquared       MAE 
-0.4709296 0.3238342 0.3704456 </code></pre>
+0.5158954 0.3942225 0.4017370 </code></pre>
 </div>
 </div>
 </section>
